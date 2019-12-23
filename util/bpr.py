@@ -10,9 +10,9 @@ def bpr(user, bpr_dict,items,user_items):
     return int(random.choice(list(unseen_items)))
 
 def sbpr(user,user_saved_items,sbpr_friend_dict,sbpr_negative_dict,
-            top_comm,user_items,items):
+        bpr_dict,top_comm,user_items,items):
     if user not in top_comm:
-        bpr_item = bpr(user)
+        bpr_item = bpr(user,bpr_dict,items,user_items)
         return (bpr_item,bpr_item)
     
     random_friend_item = None
@@ -35,7 +35,7 @@ def sbpr(user,user_saved_items,sbpr_friend_dict,sbpr_negative_dict,
     if friends_items:
         random_friend_item = int(random.choice(friends_items))
     else:
-        bpr_item = bpr(user)
+        bpr_item = bpr(user,bpr_dict,items,user_items)
         return ([bpr_item,bpr_item])
    
     if sbpr_negative_dict[user] == list(): 
